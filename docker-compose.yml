@@ -1,8 +1,24 @@
+
 services:
-  dungeon_meshi_episode_api:
+  dungeon_meshi_api:
     build:
       context: .
       dockerfile: ./Dockerfile
-    command: python manage.py runserver 0.0.0.0:8000
+    command: gunicorn user_project.wsgi:application --bind 0.0.0.0:8000
+    volumes:
+      - static_volume:/staticfiles/
+      - media_volume:/mediafiles/
+    expose:
+      - 80
+  nginx:
+    build:
+      context: ./nginx
+      dockerfile: Dockerfile
     ports:
-      - "8000:8000"
+      - 80:80
+    volumes:
+      - static_volume:/staticfiles/
+      - media_volume:/mediafiles/
+volumes:
+  static_volume:
+  media_volume:

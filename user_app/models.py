@@ -1,13 +1,12 @@
 from django.db import models
 
-class Profile(models.Model):
-    firstname = models.CharField(max_length=255)
-    lastname = models.CharField(max_length=255)
-    birthday = models.DateField(max_length=10)
-    phone = models.IntegerField()
-    email = models.CharField(max_length=255)
+class Character(models.Model):
+    name = models.CharField(max_length=255)
+    race = models.CharField(max_length=50)
+    age = models.IntegerField()
+    voice_actors = models.CharField(max_length=255)
+    summary = models.TextField(max_length=2000)
     
-
 class Episode(models.Model):
     number = models.IntegerField()
     title = models.CharField(max_length=255)
