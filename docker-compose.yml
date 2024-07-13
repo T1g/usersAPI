@@ -1,0 +1,8 @@
+services:
+  dungeon_meshi_episode_api:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    command: python manage.py runserver
+    ports:
+      - "8000:8000"
