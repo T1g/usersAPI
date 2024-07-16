@@ -56,9 +56,9 @@ MIDDLEWARE = [
 ]
 
 CORS_ALLOWED_ORIGINS = [
-    'http://localhost:3000',
-    'http://dungeon-meshi-api.cloud.s3-website.us-east-2.amazonaws.com/',
-    http://18.118.89.11/
+    'http://localhost:3000/*',
+    'http://dungeon-meshi-api.cloud.s3-website.us-east-2.amazonaws.com/*',
+    'http://18.118.89.11/*'
 ]
 
 ROOT_URLCONF = 'user_project.urls'
