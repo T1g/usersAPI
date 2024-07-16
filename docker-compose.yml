@@ -4,17 +4,22 @@ services:
     build:
       context: .
       dockerfile: ./Dockerfile
+    image: 381492212986.dkr.ecr.us-east-2.amazonaws.com/dungeon-meshi-api:dungeon_meshi_api
     command: gunicorn user_project.wsgi:application --bind 0.0.0.0:8000
     volumes:
       - static_volume:/staticfiles/
       - media_volume:/mediafiles/
     expose:
       - 80
+    env_file:
+      - ./.env.staging
   nginx:
     build:
       context: ./nginx
       dockerfile: Dockerfile
+    image: 381492212986.dkr.ecr.us-east-2.amazonaws.com/dungeon-meshi-api:nginx
     ports:
+      - 443:443
       - 80:80
     volumes:
       - static_volume:/staticfiles/
