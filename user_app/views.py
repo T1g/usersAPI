@@ -6,7 +6,7 @@ class CharacterViewSet(viewsets.ModelViewSet):
     """
     API endpoint that allows characters to be viewed or edited.
     """
-    queryset = Character.objects.all().order_by('name')
+    queryset = Character.objects.all()
     serializer_class = CharacterSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
